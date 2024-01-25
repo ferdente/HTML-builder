@@ -11,10 +11,12 @@ fs.readdir(folderPath, { withFileTypes: true })
 
         fs.stat(filePath)
           .then((fileStats) => {
+            const filename = file.name.split(".");
+            const namecut = filename[0];
             const fileSize = fileStats.size;
             const fileExtension = path.extname(file.name).slice(1);
 
-            console.log(`${file.name} - ${fileExtension} - ${fileSize} bytes`);
+            console.log(`${namecut} - ${fileExtension} - ${fileSize} bytes`);
           })
           .catch((error) => {
             console.error(`Error: ${error.message}`);
